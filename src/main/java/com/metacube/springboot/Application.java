@@ -6,7 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
+
+import com.metacube.springboot.gemFireRepo.VMIRepository;
 
 /*@SpringBootApplication is a convenience annotation that adds all of the following:
 
@@ -25,6 +29,8 @@ import org.springframework.context.ApplicationContext;
  The main() method uses Spring Boot SpringApplication.run() method to launch an application.*/
 
 @SpringBootApplication
+@EnableGemfireRepositories
+@EnableCaching
 public class Application {
 	
 	/*By default, SLF4j Logging is included in the Spring Boot web application, 
@@ -44,5 +50,7 @@ public class Application {
         	logger.debug(beanName);
         }
     }
+    
+   
 
 }
