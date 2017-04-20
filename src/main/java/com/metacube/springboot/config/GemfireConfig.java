@@ -11,6 +11,7 @@ import org.springframework.data.gemfire.LocalRegionFactoryBean;
 
 import com.gemstone.gemfire.cache.GemFireCache;
 import com.metacube.springboot.model.HeaderVMI;
+import com.metacube.springboot.model.VinData;
 
 @Configuration
 public class GemfireConfig {
@@ -38,6 +39,16 @@ public class GemfireConfig {
 		@Bean
 		LocalRegionFactoryBean<String, HeaderVMI> helloRegion(GemFireCache cache) {
 			LocalRegionFactoryBean<String, HeaderVMI> vmiRegion = new LocalRegionFactoryBean<>();
+			vmiRegion.setCache(cache);
+			vmiRegion.setClose(false);
+			vmiRegion.setName("VMI");
+			vmiRegion.setPersistent(false);
+			return vmiRegion;
+		}
+		
+		@Bean
+		LocalRegionFactoryBean<String, VinData> vinRegion(GemFireCache cache) {
+			LocalRegionFactoryBean<String, VinData> vmiRegion = new LocalRegionFactoryBean<>();
 			vmiRegion.setCache(cache);
 			vmiRegion.setClose(false);
 			vmiRegion.setName("VMI");

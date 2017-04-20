@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metacube.springboot.model.HeaderVMI;
+import com.metacube.springboot.model.VinData;
 import com.metacube.springboot.service.VMIService;
 
 @RestController
@@ -34,6 +35,22 @@ public class SpringBootController {
 
 
 		HeaderVMI returnObject = vmiService.getVMIData(vin);
+		
+		logger.info("Result ====" + returnObject.toString());
+
+		return returnObject;
+
+	}
+    
+    @RequestMapping(value = "/vin", method = RequestMethod.GET, produces = {
+			"application/json", "application/xml" })
+	@ResponseBody
+	public Object getVINData(@RequestParam("vin") String vin) throws Exception {
+
+		logger.debug("VMIController >> getDealer/{dealerId}");
+
+
+		VinData returnObject = vmiService.getVINData(vin);
 		
 		logger.info("Result ====" + returnObject.toString());
 

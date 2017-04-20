@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
 import org.springframework.stereotype.Service;
 
+import com.metacube.springboot.gemFireRepo.VINRepository;
 import com.metacube.springboot.gemFireRepo.VMIRepository;
 import com.metacube.springboot.model.HeaderVMI;
+import com.metacube.springboot.model.VinData;
 
 @Service
 @EnableGemfireRepositories(basePackageClasses=VMIRepository.class)
@@ -16,6 +18,9 @@ public class VMIService {
 	
 	@Autowired 
 	VMIRepository vmiRepository;
+	
+	@Autowired 
+	VINRepository vinRepository;
 	
 	public HeaderVMI getVMIData(String vin){
 		logger.debug("Inside  getVMIData");
@@ -26,6 +31,20 @@ public class VMIService {
 		if(returnObject == null){
 			returnObject = getVMI(vin);
 			vmiRepository.save(returnObject); // saved into gemfire
+		}
+		
+		return returnObject;
+	}
+	
+	public VinData getVINData(String vin){
+		logger.debug("Inside  getVINData");
+		VinData returnObject = null;
+		
+		returnObject = vinRepository.findVINDetailsByVinOld(vin);
+		logger.debug(" vmi data ==  " +returnObject);
+		if(returnObject == null){
+			returnObject = getVIN(vin);
+			vinRepository.save(returnObject); // saved into gemfire
 		}
 		
 		return returnObject;
@@ -51,5 +70,20 @@ public class VMIService {
 		headerVMI.setOwner("mbusa");
 		headerVMI.setVin(vin);
 		return headerVMI;
+	}
+	
+	private VinData getVIN(String vin) {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		logger.debug("Get VMI data");
+		VinData vinData = new VinData();
+		vinData.setFin("feather");
+		vinData.setVinOld(vin);
+		vinData.setLocation("Mercedes");
+		return vinData;
 	}
 }
