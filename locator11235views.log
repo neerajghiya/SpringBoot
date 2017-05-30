@@ -1,0 +1,6 @@
+
+[info 2017/05/30 14:08:37.659 IST <main> tid=0x1] Log opened with new distributed system connection.  View(creator=Neeraj-Jain(DataGemFireRestApplication)<v0>:27491, viewId=0, [Neeraj-Jain(DataGemFireRestApplication)<v0>:27491])
+
+[info 2017/05/30 14:11:55.937 IST <DM-MemberEventInvoker> tid=0x1f] A new member joined: Neeraj-Jain(DataGemFireRestApplication)<v1>:45745.  View(creator=Neeraj-Jain(DataGemFireRestApplication)<v0>:27491, viewId=1, [Neeraj-Jain(DataGemFireRestApplication)<v0>:27491, Neeraj-Jain(DataGemFireRestApplication)<v1>:45745])
+
+[info 2017/05/30 14:12:52.892 IST <DM-MemberEventInvoker> tid=0x1f] A new member joined: Neeraj-Jain(DataGemFireRestApplication1)<v3>:22250.  View(creator=Neeraj-Jain(DataGemFireRestApplication)<v0>:27491, viewId=3, [Neeraj-Jain(DataGemFireRestApplication)<v0>:27491, Neeraj-Jain(DataGemFireRestApplication1)<v3>:22250])

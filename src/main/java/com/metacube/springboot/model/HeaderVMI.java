@@ -1,5 +1,7 @@
 package com.metacube.springboot.model;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -21,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 		"optionCodes", "campaigns", "servPackages", "vehHistorys", "vehStats", "csiInfos"})
 @JsonInclude(Include.NON_NULL)
 @Region("VMI")
-public class HeaderVMI {
+public class HeaderVMI implements Serializable{
 	
 	private String errCode="";
 	private String errMsg;
